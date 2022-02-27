@@ -35,6 +35,7 @@ const MillisecondsToMinutes = (ms: number) => {
   let r = min % 1;
   let sec = Math.floor(r * 60);
   if (sec < 10) {
+    // @ts-ignore
     sec = "0" + sec;
   }
   min = Math.floor(min);

@@ -12,6 +12,7 @@ const Playlists = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+        // @ts-ignore
         const res = await spotifyApi.getUserPlaylists(session?.user?.username);
         const data = await res.body;
 

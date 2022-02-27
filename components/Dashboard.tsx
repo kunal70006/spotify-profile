@@ -13,14 +13,15 @@ const Dashboard = () => {
   const { data: session, status } = useSession();
   const spotifyApi = useSpotify();
   const [userData, setUserData] = useState<userData>();
-  const [topArtists, setTopArtists] = useState();
-  const [topTracks, setTopTracks] = useState();
+  const [topArtists, setTopArtists] = useState<any>();
+  const [topTracks, setTopTracks] = useState<any>();
 
   useEffect(() => {
     const getData = async () => {
       const promiseArr = [
         spotifyApi.getMe(),
         spotifyApi.getFollowedArtists({ limit: 1 }),
+        // @ts-ignore
         spotifyApi.getUserPlaylists(session?.user?.username),
         spotifyApi.getMyTopArtists({ limit: 10 }),
         spotifyApi.getMyTopTracks({ limit: 10 }),
