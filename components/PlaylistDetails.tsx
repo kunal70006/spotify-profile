@@ -3,7 +3,6 @@ import Image from "next/image";
 // import useSpotify from "../Utils/useSpotify";
 import Loader from "../Utils/Loader";
 import TrackDetailsContainer from "./TrackDetailsContainer";
-import AudioChart from "./AudioChart";
 import { useRouter } from "next/router";
 
 const PlaylistDetails = ({ playlistData }) => {
@@ -30,7 +29,7 @@ const PlaylistDetails = ({ playlistData }) => {
 
   return playlistData ? (
     <section className="flex w-full justify-evenly mt-20">
-      <div className="flex flex-col items-center text-gray-50">
+      <div className="flex flex-col items-center text-white w-1/3 text-center">
         <Image
           src={playlistData?.images[0]?.url}
           alt="cover image"

@@ -24,8 +24,8 @@ const Playlists = () => {
     getData();
   }, [session, spotifyApi]);
   return playlists ? (
-    <section className="flex flex-col w-full text-gray-50  items-center ml-28">
-      <h1 className="my-8 text-2xl font-medium ">Your Playlists</h1>
+    <section className="flex flex-col w-full text-white items-center ml-28">
+      <h1 className="mt-20 mb-9 text-4xl font-medium ">Your Playlists</h1>
       <div className="grid gap-x-16 gap-y-12 mb-8 xl:grid-cols-5 md:grid-cols-3 place-items-center">
         {/* <div className="flex flex-wrap "> */}
         {playlists.map((playlist) => (

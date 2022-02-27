@@ -2,10 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const TrackDetailsContainer = ({ track }) => {
-  console.log(track);
-
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between w-full">
       <div className="flex mb-8 items-end 2xl:pr-40 xl:pr-20">
         <Link passHref href={`/tracks/${track?.id}`}>
           <Image
@@ -13,7 +11,7 @@ const TrackDetailsContainer = ({ track }) => {
             width={64}
             height={64}
             alt="track cover image"
-            className="cursor-pointer"
+            className="cursor-pointer transition-opacity hover:opacity-50"
           />
         </Link>
         <div className="flex flex-col text-white ml-4 font-medium">
