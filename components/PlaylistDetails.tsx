@@ -1,10 +1,35 @@
+// import { useEffect, useState } from "react";
 import Image from "next/image";
+// import useSpotify from "../Utils/useSpotify";
 import Loader from "../Utils/Loader";
-import TrackDetails from "./TrackDetails";
+import TrackDetailsContainer from "./TrackDetailsContainer";
+import AudioChart from "./AudioChart";
+import { useRouter } from "next/router";
 
 const PlaylistDetails = ({ playlistData }) => {
+  // const trackIds = [];
+  // const spotifyApi = useSpotify();
+  // const [audioFeatures, setAudioFeatures] = useState();
+  // useEffect(() => {
+  //   if (playlistData) {
+  //     playlistData?.tracks?.items?.map((track) => {
+  //       trackIds.push(track?.track?.id);
+  //     });
+  //   }
+
+  //   const getData = async () => {
+  //     const res = await spotifyApi.getAudioFeaturesForTracks(trackIds);
+  //     const data = await res.body;
+  //     setAudioFeatures(data?.audio_features);
+  //   };
+
+  //   getData();
+  // }, [playlistData, spotifyApi]);
+
+  const router = useRouter();
+
   return playlistData ? (
-    <section className="flex w-full justify-around mt-20">
+    <section className="flex w-full justify-evenly mt-20">
       <div className="flex flex-col items-center text-gray-50">
         <Image
           src={playlistData?.images[0]?.url}
@@ -19,10 +44,20 @@ const PlaylistDetails = ({ playlistData }) => {
         <h1 className="font-medium mt-2 text-sm text-gray-400">
           {playlistData?.tracks?.total} Tracks
         </h1>
+        <div className="mt-16">
+          <button
+            className="bg-gray-500 cursor-pointer tracking-wider font-medium px-4 py-2 rounded-full transition-colors hover:bg-gray-800"
+            onClick={() => router.push(`/recommendations/${playlistData?.id}`)}
+          >
+            GET RECOMMENDATIONS
+          </button>
+          {/* <h1 className="">Audio Features</h1> */}
+          {/* <AudioChart data={audioFeatures} /> */}
+        </div>
       </div>
       <div className="flex flex-col">
         {playlistData?.tracks?.items?.map((track) => (
-          <TrackDetails track={track.track} key={track?.track?.id} />
+          <TrackDetailsContainer track={track.track} key={track?.track?.id} />
         ))}
       </div>
     </section>
