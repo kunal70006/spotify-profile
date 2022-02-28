@@ -8,7 +8,7 @@ const useSpotify = () => {
   useEffect(() => {
     if (session) {
       //   if refresh access token fails, redirect to manual login
-      if (session.error === "RefreshTokenError") {
+      if (session.error === "RefreshAccessTokenError") {
         signIn();
       }
       // @ts-ignore

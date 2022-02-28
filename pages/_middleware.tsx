@@ -11,10 +11,16 @@ export async function middleware(req) {
   }
 
   if (!token && pathname !== "/login") {
-    return NextResponse.redirect("/login");
+    // return NextResponse.redirect("/login");
+    const url = req.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.rewrite(url);
   }
 
-  if (token && pathname === "/login") {
-    return NextResponse.redirect("/");
+  if (token && pathname.includes("/login")) {
+    // return NextResponse.redirect("/");
+    const url = req.nextUrl.clone();
+    url.pathname = "/";
+    return NextResponse.rewrite(url);
   }
 }
